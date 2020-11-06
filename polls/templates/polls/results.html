@@ -1,0 +1,29 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<br>
+<br>
+
+<center><table width= "70%">
+  <tr>
+  <td>
+    <fieldset>
+    <legend><b>{{ question.question_text }}</b></legend>
+    <center><table>
+      <tr>
+        <td>
+          <ul>
+          <br>
+          {% for choice in question.choice_set.all %}
+              <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+          {% endfor %}
+          </ul>
+          <center><a href="{% url 'polls:index' %}" id="again">Votar de nuevo</a></center>
+        </td>
+      </tr>
+    </table></center>
+    </fieldset>
+  </td>
+  </tr>
+</table></center>
